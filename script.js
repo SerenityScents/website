@@ -20,7 +20,7 @@ window.addEventListener('touchstart', (event) => {
   console.log("GOT HERE 2");
 });
 
-window.addEventListener('touchcancel', (event) => {
+window.addEventListener('touchend', (event) => {
   let currentX = event.touches[0].pageX;
   let moveX = currentX - initalX;
   console.log("GOT HERE");
