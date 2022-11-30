@@ -1,5 +1,6 @@
 const NumSlides = 3;
-const MOVE_THRESHOLD = 10;
+const MOVE_OUT_THRESHOLD = 100;
+const MOVE_IN_THRESHOLD = -30;
 
 let activeSlideIndex = 0;
 let changeSlideTimeout;
@@ -8,6 +9,7 @@ let hideOverlayTimeout;
 let hamburgerIsOpen = false;
 
 let initalX;
+let currentX;
 
 window.addEventListener('DOMContentLoaded', (event) => {
   // When html is finished loading
@@ -19,14 +21,16 @@ window.addEventListener('touchstart', (event) => {
   initalX = event.touches[0].pageX;
 });
 
-window.addEventListener('touchcancel', (event) => {
-  let currentX = event.touches[0].pageX;
+window.addEventListener('touchmove', (event) => {
+  currentX = event.touches[0].pageX;
+});
+
+window.addEventListener('touchend', (event) => {
   let moveX = currentX - initalX;
-  
-  if (moveX > MOVE_THRESHOLD && !hamburgerIsOpen) {
+  if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen) {
     openHamburger();
   }
-  else if (moveX < -MOVE_THRESHOLD && hamburgerIsOpen) {
+  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen) {
     closeHamburger();
   }
   initalX = 0;
