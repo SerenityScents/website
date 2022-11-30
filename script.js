@@ -1,5 +1,5 @@
 const NumSlides = 3;
-const MOVE_THRESHOLD = 10;
+const MOVE_THRESHOLD = 100;
 
 let activeSlideIndex = 0;
 let changeSlideTimeout;
