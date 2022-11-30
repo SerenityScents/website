@@ -35,10 +35,9 @@ window.addEventListener('touchend', (event) => {
   if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen && moveX > moveY) {
     openHamburger();
   }
-  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen && moveX > moveY) {
+  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen) {
     closeHamburger();
   }
-  initalX = 0;
 })
 
 function changeSlide(change) {
