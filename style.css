@@ -347,7 +347,7 @@ scents {
   box-shadow: none;
 }
 
-#lavendar-scent {background-image: radial-gradient(#E6E6FA, #9797d3)}
+#lavender-scent {background-image: radial-gradient(#E6E6FA, #9797d3)}
 #vanilla-scent {background-image: radial-gradient(#f5e8b5, #b29d4a)}
 #sandalwood-scent {background-image: radial-gradient(#d6a889, #a56d47)}
 #cinnamon-scent {background-image: radial-gradient(#dca37a, #a75216)}
@@ -429,6 +429,18 @@ foot {
 
 .email {
   color: rgb(151, 154, 255);
+}
+
+
+.disabled {
+  cursor: no-drop !important;
+  color: rgb(42, 42, 42) !important;
+  background-color: gray !important;
+}
+
+.disabled-icon {
+  cursor: no-drop !important;
+  color: gray !important;
 }
 
 /* Media Queries */
