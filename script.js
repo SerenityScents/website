@@ -17,12 +17,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 window.addEventListener('touchstart', (event) => {
   initalX = event.touches[0].pageX;
+  console.log("GOT HERE 2");
 });
 
 window.addEventListener('touchcancel', (event) => {
   let currentX = event.touches[0].pageX;
   let moveX = currentX - initalX;
-  
+  console.log("GOT HERE");
   if (moveX > MOVE_THRESHOLD && !hamburgerIsOpen) {
     openHamburger();
   }
