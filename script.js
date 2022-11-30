@@ -8,6 +8,7 @@ let hideOverlayTimeout;
 let hamburgerIsOpen = false;
 
 let initalX;
+let currentX;
 
 window.addEventListener('DOMContentLoaded', (event) => {
   // When html is finished loading
@@ -17,14 +18,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 window.addEventListener('touchstart', (event) => {
   initalX = event.touches[0].pageX;
-  console.log("GOT HERE 2");
+});
+
+window.addEventListener('touchmove', (event) => {
+  currentX = event.touches[0].pageX;
 });
 
 window.addEventListener('touchend', (event) => {
-  console.log(event);
-  //let currentX = event.touches[0].pageX;
   let moveX = currentX - initalX;
-  console.log("GOT HERE");
   if (moveX > MOVE_THRESHOLD && !hamburgerIsOpen) {
     openHamburger();
   }
