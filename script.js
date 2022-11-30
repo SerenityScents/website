@@ -32,10 +32,10 @@ window.addEventListener('touchmove', (event) => {
 window.addEventListener('touchend', (event) => {
   let moveX = currentX - initalX;
   let moveY = currentY - initalY;
-  if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen && moveX > moveY) {
+  if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen && Math.abs(moveX) > Math.abs(moveY)) {
     openHamburger();
   }
-  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen) {
+  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen && Math.abs(moveX) > Math.abs(moveY)) {
     closeHamburger();
   }
 })
