@@ -1,14 +1,36 @@
 const NumSlides = 3;
+const MOVE_THRESHOLD = 10;
+
 let activeSlideIndex = 0;
 let changeSlideTimeout;
 let closeMenuTimeout;
 let hideOverlayTimeout;
+let hamburgerIsOpen = false;
+
+let initalX;
 
 window.addEventListener('DOMContentLoaded', (event) => {
   // When html is finished loading
   updateSlide()
   changeSlideTimeout = setTimeout(changeSlide, 5000, 1)
 });
+
+window.addEventListener('touchstart', (event) => {
+  initalX = event.touches[0].pageX;
+});
+
+window.addEventListener('touchcancel', (event) => {
+  let currentX = event.touches[0].pageX;
+  let moveX = currentX - initalX;
+  
+  if (moveX > MOVE_THRESHOLD && !hamburgerIsOpen) {
+    openHamburger();
+  }
+  else if (moveX < -MOVE_THRESHOLD && hamburgerIsOpen) {
+    closeHamburger();
+  }
+  initalX = 0;
+})
 
 function changeSlide(change) {
   clearTimeout(changeSlideTimeout)
@@ -39,6 +61,7 @@ function openHamburger() {
   slideout.style.display = "block";
   setTimeout(() => {slideout.style.marginLeft = 0;}, 1)
   body.style.overflow = "hidden";
+  hamburgerIsOpen = true;
 }
 
 function closeHamburger() {
@@ -51,4 +74,5 @@ function closeHamburger() {
   slideout.style.marginLeft = "-60vw";
   closeMenuTimeout = setTimeout(() => {slideout.style.display = "none";}, 500)
   body.style.overflow = "visible";
+  hamburgerIsOpen = false;
 }
