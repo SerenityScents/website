@@ -9,7 +9,9 @@ let hideOverlayTimeout;
 let hamburgerIsOpen = false;
 
 let initalX;
+let initalY;
 let currentX;
+let currentY;
 
 window.addEventListener('DOMContentLoaded', (event) => {
   // When html is finished loading
@@ -19,18 +21,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 window.addEventListener('touchstart', (event) => {
   initalX = event.touches[0].pageX;
+  initalY = event.touches[0].pageY;
 });
 
 window.addEventListener('touchmove', (event) => {
   currentX = event.touches[0].pageX;
+  currentY = event.touches[0].pageY;
 });
 
 window.addEventListener('touchend', (event) => {
   let moveX = currentX - initalX;
-  if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen) {
+  let moveY = currentY - initalY;
+  if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen && moveX > moveY) {
     openHamburger();
   }
-  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen) {
+  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen && moveX > moveY) {
     closeHamburger();
   }
   initalX = 0;
