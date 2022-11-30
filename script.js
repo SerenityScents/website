@@ -21,7 +21,8 @@ window.addEventListener('touchstart', (event) => {
 });
 
 window.addEventListener('touchend', (event) => {
-  let currentX = event.touches[0].pageX;
+  console.log(event);
+  //let currentX = event.touches[0].pageX;
   let moveX = currentX - initalX;
   console.log("GOT HERE");
   if (moveX > MOVE_THRESHOLD && !hamburgerIsOpen) {
