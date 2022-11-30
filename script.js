@@ -1,5 +1,6 @@
 const NumSlides = 3;
-const MOVE_THRESHOLD = 100;
+const MOVE_OUT_THRESHOLD = 100;
+const MOVE_IN_THRESHOLD = -30;
 
 let activeSlideIndex = 0;
 let changeSlideTimeout;
@@ -26,10 +27,10 @@ window.addEventListener('touchmove', (event) => {
 
 window.addEventListener('touchend', (event) => {
   let moveX = currentX - initalX;
-  if (moveX > MOVE_THRESHOLD && !hamburgerIsOpen) {
+  if (moveX > MOVE_OUT_THRESHOLD && !hamburgerIsOpen) {
     openHamburger();
   }
-  else if (moveX < -MOVE_THRESHOLD && hamburgerIsOpen) {
+  else if (moveX < MOVE_IN_THRESHOLD && hamburgerIsOpen) {
     closeHamburger();
   }
   initalX = 0;
